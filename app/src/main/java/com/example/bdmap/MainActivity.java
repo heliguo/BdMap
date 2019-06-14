@@ -127,13 +127,14 @@ public class MainActivity extends AppCompatActivity {
     private void initLocation() {
         LocationClientOption option = new LocationClientOption();
         option.setScanSpan(5000);
+        option.setIsNeedAddress(true);
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         mLocationClient.setLocOption(option);
     }
 
     private void navigateTo(BDLocation location) {
         if (isFirstLoc) {
-            LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
+            LatLng ll = new LatLng(location.getLatitude()+0.0060, location.getLongitude()+0.0065);
             MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(ll);
             mBaiduMap.animateMapStatus(update);
             update = MapStatusUpdateFactory.zoomTo(16f);
@@ -141,10 +142,14 @@ public class MainActivity extends AppCompatActivity {
             isFirstLoc = false;
         }
         MyLocationData.Builder builder = new MyLocationData.Builder();
-        builder.latitude(location.getLatitude());
-        builder.longitude(location.getLongitude());
+        builder.latitude(location.getLatitude()+0.0060);
+        builder.longitude(location.getLongitude()+0.0065);
+        double lng = location.getLongitude()+0.0065;
+        double lat = location.getLatitude()+0.0060;
+        Log.d("0123456789","经度"+ lng +"纬度"+lat);
         MyLocationData data = builder.build();
         mBaiduMap.setMyLocationData(data);
+
     }
 
     public class MyLocationListener implements BDLocationListener {
