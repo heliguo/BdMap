@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mMapView = findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMyLocationEnabled(true);
+        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
         applypermission();
         requstLocation();
 
