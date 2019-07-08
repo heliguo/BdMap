@@ -138,11 +138,13 @@ public class MainActivity extends AppCompatActivity {
             LatLng ll = new LatLng(location.getLatitude()+0.0060, location.getLongitude()+0.0065);
             MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(ll);
             mBaiduMap.animateMapStatus(update);
-            update = MapStatusUpdateFactory.zoomTo(16f);
+            //4--21
+            update = MapStatusUpdateFactory.zoomTo(18f);
             mBaiduMap.animateMapStatus(update);
             isFirstLoc = false;
         }
         MyLocationData.Builder builder = new MyLocationData.Builder();
+        //坐标偏移
         builder.latitude(location.getLatitude()+0.0060);
         builder.longitude(location.getLongitude()+0.0065);
         double lng = location.getLongitude()+0.0065;
